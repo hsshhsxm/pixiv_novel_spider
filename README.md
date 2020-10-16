@@ -12,3 +12,5 @@ python3 pixiv.py 11384598
 python3 pixiv.py 11384598 13896538
 ```
 
+# Update
+
