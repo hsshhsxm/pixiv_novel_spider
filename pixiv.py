@@ -12,20 +12,14 @@ headers = {
             "Accept-Encoding": "",
             "Connection": "keep-alive",
         }
+
 local_path = os.path.abspath(os.path.dirname(__file__))
-result_path = local_path + "/pixiv_novel/"
-
-def mkdir(path):
-    folder = os.path.exists(path)
-    if not folder:
-        os.makedirs(path)
-        print("set new floder: pixiv_novel")
-
-mkdir(result_path)
 
 class pixiv_novel():
-    def __init__(self):
+    def __init__(self,url,result_path):
         self.headers = headers
+        self.url = url
+        self.path = result_path
     
     def cookies(self):
         with open(local_path + "/cookie.txt", 'r') as f:
@@ -35,11 +29,16 @@ class pixiv_novel():
                 cookie[k] = v
             return cookie
     
+    def mkdir(self):
+        folder = os.path.exists(self.path)
+        if not folder:
+            os.makedirs(self.path)
+            print("set new floder: pixiv_novel")
+
     def run(self):
-        url = "https://www.pixiv.net/novel/show.php?id=13817572"
         #get html
         try:
-            req = requests.get(url, headers=self.headers)
+            req = requests.get(self.url, headers=self.headers)
             req.raise_for_status()
             req.encoding='utf8'
             html = BeautifulSoup(req.text, "html.parser")
@@ -57,14 +56,30 @@ class pixiv_novel():
         #write file
         file_path = result_path + title + ".txt"
         with open(file_path, 'a', encoding='utf8') as f:
+            f.write('title\n')
             f.writelines(title)
             f.write('\n\n')
+            f.write('description\n')
             f.writelines(description)
-            f.write('\n')
+            f.write('\n\n')
+            f.write('content\n')
             f.writelines(content)
-            f.write('\n')
-        print(title + "write success")
+            f.write('\n\n')
+        print(title + " write success!")
 
 if __name__ == "__main__":
-    spider = pixiv_novel()
-    spider.run()
+    try:
+        idnum = sys.argv[1]
+        total_num = len(os.sys.argv)
+        i = 1
+        while i < total_num:
+            idnum = sys.argv[i]
+            url = "https://www.pixiv.net/novel/show.php?id=" + idnum
+            result_path = local_path + "/pixiv_novel/"
+            spider = pixiv_novel(url,result_path)
+            spider.mkdir()
+            spider.run()
+            i = i + 1
+    except:
+        print("please input novel id after \'python3 pixiv.py\' ")
+
