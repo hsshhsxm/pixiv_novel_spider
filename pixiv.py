@@ -69,12 +69,12 @@ class pixiv_novel():
 
 if __name__ == "__main__":
     try:
-        idnum = sys.argv[1]
+        id_num = sys.argv[1]
         total_num = len(os.sys.argv)
         i = 1
         while i < total_num:
-            idnum = sys.argv[i]
-            url = "https://www.pixiv.net/novel/show.php?id=" + idnum
+            id_num = sys.argv[i]
+            url = "https://www.pixiv.net/novel/show.php?id=" + id_num
             result_path = local_path + "/pixiv_novel/"
             spider = pixiv_novel(url,result_path)
             spider.mkdir()
