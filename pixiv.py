@@ -52,18 +52,20 @@ class pixiv_novel():
         text_data_dict = text_data_dict[key]
         title = text_data_dict['title']
         description = text_data_dict['description']
+        description = description.replace("<br />","\n")
         content = text_data_dict['content']
+        content = content.replace("[newpage]","")
         #write file
         file_path = result_path + title + ".txt"
         with open(file_path, 'a', encoding='utf8') as f:
             f.write('title\n')
-            f.writelines(title)
+            f.writelines(title:)
             f.write('\n\n')
             f.write('description\n')
-            f.writelines(description)
+            f.writelines(description:)
             f.write('\n\n')
             f.write('content\n')
-            f.writelines(content)
+            f.writelines(content:)
             f.write('\n\n')
         print(title + " write success!")
 
