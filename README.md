@@ -16,3 +16,6 @@ python3 pixiv.py a 11
 #下载一个作者的全部小说
 python3 pixiv_r18.py #然后根据提示输入作者ID、用户名、密码
 ```
+
+##Reference
+[kougamishinnya](https://github.com/kougamishinnya/Pixiv_new_spider)
