@@ -129,7 +129,7 @@ if __name__ == "__main__":
             author_path = novel_list_spider.mkdir_for_author()
             author_name = novel_list_spider.get_author_name()
             total_num = len(novel_list)
-            print(author_name + str(total_num) + "novels") 
+            print(author_name + " has " + str(total_num) + "novels") 
             i = 0
             while i < total_num:
                 id_num = novel_list[i]
