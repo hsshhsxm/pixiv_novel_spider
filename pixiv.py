@@ -127,9 +127,8 @@ if __name__ == "__main__":
             novel_list_spider = pixiv_novel('a', userid, result_path)
             novel_list = novel_list_spider.get_author_novel_list()
             author_path = novel_list_spider.mkdir_for_author()
-            print(novel_list)
             total_num = len(novel_list)
-            print(total_num)
+            print(str(total_num) + "novels") 
             i = 0
             while i < total_num:
                 id_num = novel_list[i]
