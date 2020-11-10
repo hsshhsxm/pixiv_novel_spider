@@ -15,7 +15,7 @@ python3 pixiv.py n 11384598 13896538
 #下载一个作者的全部非R-18小说/download all novels by one author except r-18 novels
 python3 pixiv.py a 11
 #下载一个作者的全部小说/download all novels by one author including r-18 novels
-python3 pixiv_r18.py #然后根据提示输入作者ID、用户名、密码/then input author's id, your id,your passport
+python3 pixiv_r18.py #然后根据提示输入作者ID、用户名、密码/then input author's id, your id,your password
 ```
 
 ## Reference
